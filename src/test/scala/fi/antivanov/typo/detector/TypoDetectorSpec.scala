@@ -25,5 +25,9 @@ class TypoDetectorSpec extends FreeSpec with Matchers {
     "two different strings with longer distance" in {
       computeLevensteinDistance("kitten", "sitting") shouldEqual 3
     }
+
+    "work with longer strings" in {
+      computeLevensteinDistance("Levenshtein distance", "Levenshtein dictance") shouldEqual 1
+    }
   }
 }

@@ -1,33 +1,31 @@
 package fi.antivanov.typo.detector
 
+import fi.antivanov.typo.detector.LevensteinDistance._
 import org.scalatest._
-import TypoDetector._
 
 class TypoDetectorSpec extends FreeSpec with Matchers {
-  "Levenstein distance" - {
-    "one symbol distance - substitution" in {
-      computeLevensteinDistance("cat", "sat") shouldEqual 1
+
+  import TypoDetector.StringWithTypoDetection._
+
+  "isTypoOf" - {
+    "differs by two symbols => typo" in {
+      "Helsinki".isTypoOf("Helsenke") shouldBe true
     }
 
-    /*
-     * Symbol insertion is dual to symbol deletion:
-     *
-     * str1 = "ab", str2 = "abc", Levenstein distance is 1
-     *
-     * str1 requires one symbol addition "c"
-     * or
-     * str2 requires one symbol deletion "c" (same symbol)
-     */
-    "one symbol distance - symbol deletion" in {
-      computeLevensteinDistance("catt", "cat") shouldEqual 1
+    "differs by one symbol => typo" in {
+      "Helsinki".isTypoOf("Helsenki") shouldBe true
     }
 
-    "two different strings with longer distance" in {
-      computeLevensteinDistance("kitten", "sitting") shouldEqual 3
+    "identical => not a typo" in {
+      "Helsinki".isTypoOf("Helsinki") shouldBe false
     }
 
-    "work with longer strings" in {
-      computeLevensteinDistance("Levenshtein distance", "Levenshtein dictance") shouldEqual 1
+    "differs by three symbols => not a typo, too many different symbols" in {
+      "Helsinki".isTypoOf("Helsingfors") shouldBe false
+    }
+
+    "allows to specify max number of different symbols" in {
+      "Helsinki".isTypoOf("Helsingfors", maxMistypedSymbols = 5) shouldBe true
     }
   }
 }

@@ -1,4 +1,4 @@
-package fi.antivanov.typo.detector
+package io.github.antivanov.typo.detector
 
 import org.scalatest._
 import LevensteinDistance._

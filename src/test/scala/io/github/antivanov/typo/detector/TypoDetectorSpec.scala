@@ -1,6 +1,5 @@
-package fi.antivanov.typo.detector
+package io.github.antivanov.typo.detector
 
-import fi.antivanov.typo.detector.LevensteinDistance._
 import org.scalatest._
 
 class TypoDetectorSpec extends FreeSpec with Matchers {

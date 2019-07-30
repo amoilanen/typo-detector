@@ -1,4 +1,4 @@
-package fi.antivanov.typo.detector
+package io.github.antivanov.typo.detector
 
 import LevensteinDistance.computeDistance
 

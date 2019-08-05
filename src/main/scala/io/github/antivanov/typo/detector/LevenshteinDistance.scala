@@ -1,6 +1,6 @@
 package io.github.antivanov.typo.detector
 
-object LevensteinDistance {
+private[detector] object LevenshteinDistance {
 
   def computeDistance(first: String, second: String): Int = {
     /*

@@ -7,6 +7,13 @@ class TypoDetectorSpec extends FreeSpec with Matchers {
   import TypoDetector.StringWithTypoDetection._
 
   "isTypoOf" - {
+
+    "detects common typos" in {
+      "annualy".isTypoOf("annually") shouldBe true
+      "buisness".isTypoOf("business") shouldBe true
+      "pronunciation".isTypoOf("pronounciation") shouldBe true
+    }
+
     "differs by two symbols => typo" in {
       "Helsinki".isTypoOf("Helsenke") shouldBe true
     }

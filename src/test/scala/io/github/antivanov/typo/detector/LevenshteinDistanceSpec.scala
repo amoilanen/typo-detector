@@ -1,10 +1,10 @@
 package io.github.antivanov.typo.detector
 
 import org.scalatest._
-import LevensteinDistance._
+import LevenshteinDistance._
 
-class LevensteinDistanceSpec extends FreeSpec with Matchers {
-  "Levenstein distance" - {
+class LevenshteinDistanceSpec extends FreeSpec with Matchers {
+  "Levenshtein distance" - {
     "one symbol distance - substitution" in {
       computeDistance("cat", "sat") shouldEqual 1
     }
@@ -12,7 +12,7 @@ class LevensteinDistanceSpec extends FreeSpec with Matchers {
     /*
      * Symbol insertion is dual to symbol deletion:
      *
-     * str1 = "ab", str2 = "abc", Levenstein distance is 1
+     * str1 = "ab", str2 = "abc", Levenshtein distance is 1
      *
      * str1 requires one symbol addition "c"
      * or
@@ -27,7 +27,7 @@ class LevensteinDistanceSpec extends FreeSpec with Matchers {
     }
 
     "work with longer strings" in {
-      computeDistance("Levenstein distance", "Levenstein dictance") shouldEqual 1
+      computeDistance("Levenshtein distance", "Levenshtein dictance") shouldEqual 1
     }
   }
 }

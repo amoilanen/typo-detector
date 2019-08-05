@@ -9,6 +9,7 @@ lazy val root = (project in file("."))
   )
 
 ThisBuild / scalaVersion     := "2.13.0"
+ThisBuild / version     := "0.1.1"
 ThisBuild / name             := "typo-detector"
 ThisBuild / organization     := "io.github.antivanov"
 ThisBuild / licenses         := Seq("MIT  " -> url("https://opensource.org/licenses/MIT"))
@@ -38,3 +39,5 @@ ThisBuild / publishTo := {
   else Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
 ThisBuild / publishMavenStyle := true
+
+updateOptions := updateOptions.value.withGigahorse(false)

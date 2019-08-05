@@ -18,14 +18,14 @@ such an input `typo-detector` might be used instead.
 <dependency>
   <groupId>io.github.antivanov</groupId>
   <artifactId>typo-detector</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 </dependency>
 ```
 
 #### SBT
 
 ```
-libraryDependencies += "io.github.antivanov" % "typo-detector" % "0.1.0"
+libraryDependencies += "io.github.antivanov" % "typo-detector" % "0.1.1"
 ```
 
 ### Code examples

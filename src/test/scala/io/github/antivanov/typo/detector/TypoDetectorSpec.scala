@@ -85,8 +85,10 @@ class TypoDetectorSpec extends FreeSpec with Matchers {
     }
 
     "recognize typo if string consists of several words" in {
-      text.replaceFirst("great", "greet")
-        .replaceAll("Achilles", "Achilez").containsExactOrTypoOf("great Achilles") shouldBe true
+      text
+        .replaceFirst("great", "greet")
+        .replaceAll("Achilles", "Achilez")
+        .containsExactOrTypoOf("great Achilles") shouldBe true
     }
 
     "return false if not contained" in {

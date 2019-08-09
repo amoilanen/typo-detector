@@ -4,7 +4,7 @@ import org.scalatest._
 
 class TypoDetectorSpec extends FreeSpec with Matchers {
 
-  import TypoDetector.StringWithTypoDetection._
+  import TypoDetector.TypoAwareString._
 
   "isTypoOf" - {
 

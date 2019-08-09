@@ -4,7 +4,7 @@
 
 Typo detector library in Scala.
 
-Typical use case: a certain input needs to be detected, however it might be misspelled in
+Typical use case: certain words need to be found in a text, however they might be misspelled in
 a variety of ways. Instead of trying to hardcode the possible misspellings of
 such an input `typo-detector` might be used instead.
 
@@ -18,24 +18,42 @@ such an input `typo-detector` might be used instead.
 <dependency>
   <groupId>io.github.antivanov</groupId>
   <artifactId>typo-detector</artifactId>
-  <version>0.1.1</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 
 #### SBT
 
 ```
-libraryDependencies += "io.github.antivanov" % "typo-detector" % "0.1.1"
+libraryDependencies += "io.github.antivanov" % "typo-detector" % "0.2.0"
 ```
 
 ### Code examples
 
-#### Basic usage
+#### Searching for (maybe mistyped) words in a text
+
+Enhancing the `String` class with `containsExactOrTypoOf` method
+
+```scala
+import io.github.antivanov.typo.detector.TypoDetector.TypoAwareString._
+
+"Quick bron fox jumps over the lazy dog".containsExactOrTypoOf("brown fox")
+```
+
+Using API object `TypoDetector` if using implicits is not desirable
+
+```scala
+import io.github.antivanov.typo.detector.TypoDetector
+
+TypoDetector.containsExactOrTypoOf("Quick bron fox jumps over the lazy dog", "brown fox")
+```
+
+#### Detecting if a string is a typo of another string
 
 Enhancing the `String` class with `isTypoOf` method
 
 ```scala
-import io.github.antivanov.typo.detector.TypoDetector.StringWithTypoDetection._
+import io.github.antivanov.typo.detector.TypoDetector.TypoAwareString._
 
 val acknowlegmentText = "acknowlege"
 val isAcknowledged = acknowlegmentText.isTypoOf("acknowledge")
@@ -50,6 +68,11 @@ val acknowlegmentText = "acknowlege"
 val isAcknowledged = TypoDetector.isTypoOf(acknowlegmentText, "acknowledge")
 ```
 
+#### Detecting if another string is equal to current string or is its typo
+
+`equalsOrTypoOf` is very similar in usage to `isTypoOf`, but returns true if another
+string is either a typo or is equal to the current string
+
 #### Specifying how many wrong symbols is considered a typo
 
 By default the number of wrongly typed symbols for a string to be considered a typo
@@ -59,7 +82,7 @@ to detect typos, for example:
 Enhancing the `String` class with `isTypoOf` method
 
 ```scala
-import io.github.antivanov.typo.detector.TypoDetector.StringWithTypoDetection._
+import io.github.antivanov.typo.detector.TypoDetector.TypoAwareString._
 
 val misspelledWord = "gementeradverkiezingen"
 val isMisspelled = misspelledWord.isTypoOf("gemeenteraadsverkiezingen", maxMistypedSymbols = 5)
@@ -81,7 +104,7 @@ val isMisspelled = TypoDetector.isTypoOf(misspelledWord, "gemeenteraadsverkiezin
 Enhancing the `String` class with `editDistanceFrom` method
 
 ```scala
-import io.github.antivanov.typo.detector.TypoDetector.StringWithTypoDetection._
+import io.github.antivanov.typo.detector.TypoDetector.TypoAwareString._
 
 val acknowlegmentText = "acknowlege"
 val distance = acknowlegmentText.editDistanceFrom("acknowledge")

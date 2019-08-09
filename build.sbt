@@ -9,7 +9,7 @@ lazy val root = (project in file("."))
   )
 
 ThisBuild / scalaVersion     := "2.13.0"
-ThisBuild / version     := "0.1.1"
+ThisBuild / version     := "0.2.0"
 ThisBuild / name             := "typo-detector"
 ThisBuild / organization     := "io.github.antivanov"
 ThisBuild / licenses         := Seq("MIT  " -> url("https://opensource.org/licenses/MIT"))

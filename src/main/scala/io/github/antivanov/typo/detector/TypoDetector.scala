@@ -52,7 +52,7 @@ object TypoDetector {
       *
       *  For example:
       *  {{{
-      *  containsExactOrTypoOf("Quick bron fox jumps over the lazy dog", "brown fox")
+      *  "Quick bron fox jumps over the lazy dog".containsExactOrTypoOf("brown fox")
       *  }}}
       *  evaluates to {@code true}
       *

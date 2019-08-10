@@ -8,8 +8,10 @@ lazy val root = (project in file("."))
     libraryDependencies += scalaTest % Test
   )
 
-ThisBuild / scalaVersion     := "2.13.0"
-ThisBuild / version     := "0.2.0"
+crossScalaVersions := Seq("2.13.0", "2.12.8")
+
+ThisBuild / scalaVersion     := crossScalaVersions.value.head
+ThisBuild / version          := "0.2.0"
 ThisBuild / name             := "typo-detector"
 ThisBuild / organization     := "io.github.antivanov"
 ThisBuild / licenses         := Seq("MIT  " -> url("https://opensource.org/licenses/MIT"))

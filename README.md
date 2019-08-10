@@ -24,11 +24,21 @@ such an input `typo-detector` might be used instead.
 
 #### SBT
 
-```
+```scala
 resolvers += Resolver.sonatypeRepo("releases")
-...
+```
+
+```scala
 libraryDependencies += "io.github.antivanov" % "typo-detector_2.13" % "0.2.0"
 ```
+
+for Scala 2.13.0
+
+```scala
+libraryDependencies += "io.github.antivanov" % "typo-detector_2.12" % "0.2.0"
+```
+
+for Scala 2.12.8
 
 ### Code examples
 

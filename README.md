@@ -17,7 +17,7 @@ such an input `typo-detector` might be used instead.
 ```
 <dependency>
   <groupId>io.github.antivanov</groupId>
-  <artifactId>typo-detector</artifactId>
+  <artifactId>typo-detector_2.13</artifactId>
   <version>0.2.0</version>
 </dependency>
 ```
@@ -25,7 +25,9 @@ such an input `typo-detector` might be used instead.
 #### SBT
 
 ```
-libraryDependencies += "io.github.antivanov" % "typo-detector" % "0.2.0"
+resolvers += Resolver.sonatypeRepo("releases")
+...
+libraryDependencies += "io.github.antivanov" % "typo-detector_2.13" % "0.2.0"
 ```
 
 ### Code examples

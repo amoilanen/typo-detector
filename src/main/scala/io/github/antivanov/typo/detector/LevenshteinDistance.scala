@@ -23,7 +23,10 @@ private[detector] object LevenshteinDistance:
       rowIndex    <- (1 to firstLength)
       columnIndex <- (1 to secondLength)
     yield
-      val substitutionCount = if first(rowIndex - 1) == second(columnIndex - 1) then 0 else 1
+      val substitutionCount =
+        if first(rowIndex - 1) == second(columnIndex - 1)
+        then 0
+        else 1
 
       val deletionCost     = distances(rowIndex - 1)(columnIndex) + 1
       val insertionCost    = distances(rowIndex)(columnIndex - 1) + 1

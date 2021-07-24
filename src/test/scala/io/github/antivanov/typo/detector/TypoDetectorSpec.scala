@@ -1,8 +1,9 @@
 package io.github.antivanov.typo.detector
 
-import org.scalatest._
+import org.scalatest.freespec.AnyFreeSpecLike
+import org.scalatest.matchers.should
 
-class TypoDetectorSpec extends FreeSpec with Matchers {
+class TypoDetectorSpec extends AnyFreeSpecLike with should.Matchers {
 
   import TypoDetector.TypoAwareString._
 

@@ -78,7 +78,8 @@ object TypoDetector {
 
   object TypoAwareString {
 
-    implicit def stringToString(s: String) = new TypoAwareString(s)
+    implicit def stringToString(s: String): TypoAwareString =
+      new TypoAwareString(s)
   }
 
   /** Determines if str is a mistyped version of otherStr
@@ -139,7 +140,7 @@ object TypoDetector {
 
     val possiblePositions = (0 to (textWords.length - strToFindWords.length))
 
-    val positionOfStrToFind = possiblePositions.find { position: Int =>
+    val positionOfStrToFind = possiblePositions.find { (position: Int) =>
       val textWordsAtPosition = textWords.slice(position, position + strToFindWords.length)
       textWordsAtPosition.zip(strToFindWords).forall {
         case (textWord, strToFindWord) =>

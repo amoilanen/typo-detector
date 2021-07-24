@@ -3,7 +3,7 @@ package io.github.antivanov.typo.detector
 import org.scalatest.freespec.AnyFreeSpecLike
 import org.scalatest.matchers.should
 
-class TypoDetectorSpec extends AnyFreeSpecLike with should.Matchers {
+class TypoDetectorSpec extends AnyFreeSpecLike with should.Matchers:
 
   import TypoDetector.TypoAwareString._
 
@@ -96,4 +96,3 @@ class TypoDetectorSpec extends AnyFreeSpecLike with should.Matchers {
       text.containsExactOrTypoOf("Priam") shouldBe false
     }
   }
-}

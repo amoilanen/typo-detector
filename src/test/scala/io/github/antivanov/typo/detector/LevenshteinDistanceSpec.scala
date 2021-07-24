@@ -4,7 +4,7 @@ import org.scalatest.freespec.AnyFreeSpecLike
 import org.scalatest.matchers.should
 import LevenshteinDistance._
 
-class LevenshteinDistanceSpec extends AnyFreeSpecLike with should.Matchers {
+class LevenshteinDistanceSpec extends AnyFreeSpecLike with should.Matchers:
   "Levenshtein distance" - {
     "one symbol distance - substitution" in {
       computeDistance("cat", "sat") shouldEqual 1
@@ -31,4 +31,3 @@ class LevenshteinDistanceSpec extends AnyFreeSpecLike with should.Matchers {
       computeDistance("Levenshtein distance", "Levenshtein dictance") shouldEqual 1
     }
   }
-}

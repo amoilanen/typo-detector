@@ -1,9 +1,10 @@
 package io.github.antivanov.typo.detector
 
-import org.scalatest._
+import org.scalatest.freespec.AnyFreeSpecLike
+import org.scalatest.matchers.should
 import LevenshteinDistance._
 
-class LevenshteinDistanceSpec extends FreeSpec with Matchers {
+class LevenshteinDistanceSpec extends AnyFreeSpecLike with should.Matchers:
   "Levenshtein distance" - {
     "one symbol distance - substitution" in {
       computeDistance("cat", "sat") shouldEqual 1
@@ -30,4 +31,3 @@ class LevenshteinDistanceSpec extends FreeSpec with Matchers {
       computeDistance("Levenshtein distance", "Levenshtein dictance") shouldEqual 1
     }
   }
-}

@@ -3,7 +3,7 @@ package io.github.antivanov.typo.detector
 import LevenshteinDistance.computeDistance
 
 /** Includes useful methods to search in text and test whether a string is a typo of another string */
-object TypoDetector {
+object TypoDetector:
 
   /** Default maximum number of mistyped symbols allowed for a string to be considered a typo
     *  (number of symbol replacements, omitted or extra symbols)
@@ -20,7 +20,7 @@ object TypoDetector {
     *
     * @param str original string to be wrapped
     */
-  class TypoAwareString(str: String) {
+  class TypoAwareString(str: String):
 
     /** Determines if str is a mistyped version of otherStr
       *
@@ -74,12 +74,11 @@ object TypoDetector {
       */
     def editDistanceFrom(otherStr: String): Int =
       TypoDetector.editDistanceFrom(str, otherStr)
-  }
 
-  object TypoAwareString {
+  object TypoAwareString:
 
-    implicit def stringToString(s: String) = new TypoAwareString(s)
-  }
+    implicit def stringToString(s: String): TypoAwareString =
+      new TypoAwareString(s)
 
   /** Determines if str is a mistyped version of otherStr
     *
@@ -94,10 +93,9 @@ object TypoDetector {
       str: String,
       otherStr: String,
       maxMistypedSymbols: Int = DefaultMaxMistypedSymbols
-  ): Boolean = {
+  ): Boolean =
     val distance = computeDistance(str, otherStr)
     distance > 0 && distance <= maxMistypedSymbols
-  }
 
   /** Determines if str is equal to otherStr or is its typo
     *
@@ -133,13 +131,13 @@ object TypoDetector {
       text: String,
       wordsToFind: String,
       maxMistypedSymbolsPerWord: Int = DefaultMaxMistypedSymbols
-  ): Boolean = {
+  ): Boolean =
     val textWords      = getWords(text)
     val strToFindWords = getWords(wordsToFind)
 
     val possiblePositions = (0 to (textWords.length - strToFindWords.length))
 
-    val positionOfStrToFind = possiblePositions.find { position: Int =>
+    val positionOfStrToFind = possiblePositions.find { (position: Int) =>
       val textWordsAtPosition = textWords.slice(position, position + strToFindWords.length)
       textWordsAtPosition.zip(strToFindWords).forall {
         case (textWord, strToFindWord) =>
@@ -147,7 +145,6 @@ object TypoDetector {
       }
     }
     positionOfStrToFind.isDefined
-  }
 
   /** Computes the "edit distance" from str to otherStr: number of symbol substitutions, insertions or deletions to
     * transform str into otherStr. Also known as "Levenshtein distance" {@link https://en.wikipedia.org/wiki/Levenshtein_distance}
@@ -158,4 +155,3 @@ object TypoDetector {
     */
   def editDistanceFrom(str: String, otherStr: String): Int =
     computeDistance(str, otherStr)
-}

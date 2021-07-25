@@ -17,24 +17,33 @@ such an input `typo-detector` might be used instead.
 ```
 <dependency>
   <groupId>io.github.antivanov</groupId>
-  <artifactId>typo-detector_2.13</artifactId>
-  <version>0.2.0</version>
+  <artifactId>typo-detector_3</artifactId>
+  <version>0.3.0</version>
 </dependency>
 ```
 
 #### SBT
 
-```scala
-libraryDependencies += "io.github.antivanov" % "typo-detector_2.13" % "0.2.0"
-```
-
-for Scala 2.13.0
+For Scala 3:
 
 ```scala
-libraryDependencies += "io.github.antivanov" % "typo-detector_2.12" % "0.2.0"
+libraryDependencies += "io.github.antivanov" %% "typo-detector" % "0.3.0"
 ```
 
-for Scala 2.12.8
+For Scala 2:
+
+```scala
+libraryDependencies += ("io.github.antivanov" %% "typo-detector" % "0.3.0")
+  .cross(CrossVersion.for2_13Use3)
+```
+
+Make sure you have `-Ytasty-reader` compiler flag set:
+
+```scala
+ThisBuild / scalacOptions := Seq(
+  "-Ytasty-reader",
+)
+```
 
 ### Code examples
 

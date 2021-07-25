@@ -1,8 +1,8 @@
 package io.github.antivanov.typo.detector
 
-private[detector] object LevenshteinDistance {
+private[detector] object LevenshteinDistance:
 
-  def computeDistance(first: String, second: String): Int = {
+  def computeDistance(first: String, second: String): Int =
     /*
      * Using the Wagner-Fischer algorithm, more efficient than the recursive definition
      * https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm
@@ -19,19 +19,19 @@ private[detector] object LevenshteinDistance {
       distances(0)(columnIndex) = columnIndex
     }
 
-    for {
+    for
       rowIndex    <- (1 to firstLength)
       columnIndex <- (1 to secondLength)
-    } yield {
-      val substitutionCount = if (first(rowIndex - 1) == second(columnIndex - 1)) 0 else 1
+    yield
+      val substitutionCount =
+        if first(rowIndex - 1) == second(columnIndex - 1)
+        then 0
+        else 1
 
       val deletionCost     = distances(rowIndex - 1)(columnIndex) + 1
       val insertionCost    = distances(rowIndex)(columnIndex - 1) + 1
       val substitutionCost = distances(rowIndex - 1)(columnIndex - 1) + substitutionCount
 
       distances(rowIndex)(columnIndex) = Seq(deletionCost, insertionCost, substitutionCost).min
-    }
 
     distances(firstLength)(secondLength)
-  }
-}

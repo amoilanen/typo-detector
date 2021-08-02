@@ -2,7 +2,7 @@ package io.github.antivanov.typo.detector
 
 import org.scalatest.freespec.AnyFreeSpecLike
 import org.scalatest.matchers.should
-import LevenshteinDistance._
+import LevenshteinDistance.*
 
 class LevenshteinDistanceSpec extends AnyFreeSpecLike with should.Matchers:
   "Levenshtein distance" - {

@@ -6,7 +6,7 @@ import TypoDetector.*
   */
 object syntax:
 
-  extension (str: String)
+  implicit class TypoAwareStringSyntax(val str: String) extends AnyVal:
 
     /** Determines if str is a mistyped version of otherStr
       *

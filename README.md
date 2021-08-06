@@ -18,7 +18,7 @@ such an input `typo-detector` might be used instead.
 <dependency>
   <groupId>io.github.antivanov</groupId>
   <artifactId>typo-detector_3</artifactId>
-  <version>0.3.0</version>
+  <version>0.4.0</version>
 </dependency>
 ```
 
@@ -27,13 +27,13 @@ such an input `typo-detector` might be used instead.
 For Scala 3:
 
 ```scala
-libraryDependencies += "io.github.antivanov" %% "typo-detector" % "0.3.0"
+libraryDependencies += "io.github.antivanov" %% "typo-detector" % "0.4.0"
 ```
 
 For Scala 2:
 
 ```scala
-libraryDependencies += ("io.github.antivanov" %% "typo-detector" % "0.3.0")
+libraryDependencies += ("io.github.antivanov" %% "typo-detector" % "0.4.0")
   .cross(CrossVersion.for2_13Use3)
 ```
 
@@ -52,7 +52,7 @@ ThisBuild / scalacOptions := Seq(
 Enhancing the `String` class with `containsExactOrTypoOf` method
 
 ```scala
-import io.github.antivanov.typo.detector.TypoDetector.TypoAwareString._
+import io.github.antivanov.typo.detector.syntax._
 
 "Quick bron fox jumps over the lazy dog".containsExactOrTypoOf("brown fox")
 ```
@@ -70,7 +70,7 @@ TypoDetector.containsExactOrTypoOf("Quick bron fox jumps over the lazy dog", "br
 Enhancing the `String` class with `isTypoOf` method
 
 ```scala
-import io.github.antivanov.typo.detector.TypoDetector.TypoAwareString._
+import io.github.antivanov.typo.detector.syntax._
 
 val acknowlegmentText = "acknowlege"
 val isAcknowledged = acknowlegmentText.isTypoOf("acknowledge")
@@ -99,7 +99,7 @@ to detect typos, for example:
 Enhancing the `String` class with `isTypoOf` method
 
 ```scala
-import io.github.antivanov.typo.detector.TypoDetector.TypoAwareString._
+import io.github.antivanov.typo.detector.syntax._
 
 val misspelledWord = "gementeradverkiezingen"
 val isMisspelled = misspelledWord.isTypoOf("gemeenteraadsverkiezingen", maxMistypedSymbols = 5)
@@ -121,7 +121,7 @@ val isMisspelled = TypoDetector.isTypoOf(misspelledWord, "gemeenteraadsverkiezin
 Enhancing the `String` class with `editDistanceFrom` method
 
 ```scala
-import io.github.antivanov.typo.detector.TypoDetector.TypoAwareString._
+import io.github.antivanov.typo.detector.syntax._
 
 val acknowlegmentText = "acknowlege"
 val distance = acknowlegmentText.editDistanceFrom("acknowledge")

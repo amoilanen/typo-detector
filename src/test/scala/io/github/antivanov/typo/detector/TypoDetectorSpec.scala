@@ -5,7 +5,7 @@ import org.scalatest.matchers.should
 
 class TypoDetectorSpec extends AnyFreeSpecLike with should.Matchers:
 
-  import TypoDetector.TypoAwareString._
+  import syntax.*
 
   "isTypoOf" - {
 
